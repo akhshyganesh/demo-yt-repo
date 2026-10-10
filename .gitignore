@@ -1,0 +1,5 @@
+node_modules/
+frontend/dist/
+.env
+.vercel/
+npm-debug.log*

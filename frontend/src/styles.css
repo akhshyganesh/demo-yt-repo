@@ -1,0 +1,115 @@
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #252823;
+  background: #f7f6f2;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  --muted: #92958d;
+  --green: #5e775c;
+  --line: #eeeee8;
+}
+
+* { box-sizing: border-box; }
+body { min-width: 320px; min-height: 100vh; margin: 0; }
+button, input { font: inherit; }
+button { color: inherit; }
+
+.page-shell { width: min(1110px, calc(100% - 72px)); margin: 0 auto; }
+.topbar { height: 83px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eae9e3; }
+.brand { display: inline-flex; align-items: center; gap: 9px; color: #30332e; text-decoration: none; font: 800 20px "Manrope", sans-serif; letter-spacing: -1px; }
+.brand-mark { width: 26px; height: 26px; display: grid; place-items: center; border-radius: 8px; color: white; background: #70866b; }
+.brand-period { color: #a5ae8e; }
+.topbar-note { display: flex; align-items: center; gap: 9px; color: #8a8d85; font-size: 12px; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: #a7b58c; }
+
+.todo-layout { display: grid; grid-template-columns: 0.84fr 1.16fr; align-items: center; gap: 95px; padding: 78px 24px 55px; }
+.intro { padding-bottom: 5px; }
+.eyebrow { display: flex; align-items: center; gap: 8px; color: #869078; font-size: 10px; font-weight: 700; letter-spacing: 1.7px; }
+.intro h1 { margin: 22px 0 16px; font: 700 clamp(38px, 4.4vw, 52px)/1.15 "Manrope", sans-serif; letter-spacing: -2.8px; }
+.intro h1 span { color: #849276; }
+.intro > p { max-width: 290px; margin: 0; color: #85877f; font-size: 14px; line-height: 1.8; }
+.progress-card { margin-top: 43px; padding: 19px 20px 17px; border: 1px solid #e9e9e1; border-radius: 12px; background: rgba(255,255,255,.48); }
+.progress-heading { display: flex; justify-content: space-between; color: #7f8378; font-size: 9px; font-weight: 700; letter-spacing: 1.1px; }
+.progress-heading span:last-child { color: #667b61; }
+.progress-track { height: 4px; margin-top: 14px; overflow: hidden; border-radius: 5px; background: #e9eae3; }
+.progress-fill { height: 100%; border-radius: inherit; background: #87977a; transition: width .3s ease; }
+.progress-caption { margin-top: 11px; color: #9a9b93; font-size: 11px; }
+.gentle-reminder { display: flex; align-items: center; gap: 12px; margin: 27px 0 0 3px; color: #85877f; font-size: 11px; line-height: 1.7; }
+.reminder-icon { color: #a8ad93; font-size: 20px; }
+
+.todo-card { padding: 30px 31px 18px; border: 1px solid #eeede7; border-radius: 15px; background: #fff; box-shadow: 0 14px 50px rgba(47, 49, 38, .045); }
+.card-heading { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 23px; }
+.date-label { color: #999b92; font-size: 9px; font-weight: 700; letter-spacing: 1.25px; }
+.card-heading h2 { margin: 7px 0 0; font: 700 23px "Manrope", sans-serif; letter-spacing: -.8px; }
+.task-count { display: flex; align-items: center; gap: 6px; padding: 7px 10px; border-radius: 20px; color: #72816a; background: #f1f3ed; font-size: 10px; font-weight: 600; }
+.add-form { display: flex; align-items: center; gap: 11px; height: 49px; padding: 0 7px 0 13px; border: 1px solid #e9eae3; border-radius: 9px; background: #fbfbf9; }
+.add-icon { flex-shrink: 0; color: #86927c; }
+.add-form input { width: 100%; min-width: 0; padding: 0; border: 0; outline: none; color: #373a34; background: transparent; font-size: 12px; }
+.add-form input::placeholder { color: #a7a99f; }
+.add-button { display: inline-flex; flex-shrink: 0; align-items: center; gap: 5px; padding: 9px 11px; border: 0; border-radius: 7px; color: #fff; background: #708369; cursor: pointer; font-size: 10px; font-weight: 600; transition: background .2s; }
+.add-button:hover:not(:disabled) { background: #5f7358; }
+.add-button:disabled { opacity: .55; cursor: not-allowed; }
+.submit-arrow { transform: rotate(-45deg); }
+.filter-tabs { display: flex; gap: 22px; margin-top: 23px; border-bottom: 1px solid #efefe9; }
+.filter-tab { position: relative; display: flex; align-items: center; gap: 7px; padding: 0 0 12px; border: 0; color: #999b94; background: transparent; cursor: pointer; font-size: 10px; }
+.filter-tab.active { color: #4f654a; font-weight: 700; }
+.filter-tab.active::after { position: absolute; right: 0; bottom: -1px; left: 0; height: 2px; background: #71856b; content: ""; }
+.filter-count { min-width: 16px; padding: 2px 4px; border-radius: 8px; background: #f3f3ee; text-align: center; font-size: 9px; }
+.filter-tab.active .filter-count { color: #687b61; background: #eff2eb; }
+
+.task-list { min-height: 241px; }
+.todo-row { display: flex; align-items: center; gap: 12px; min-height: 52px; border-bottom: 1px solid #f1f1ed; animation: appear .2s ease both; }
+.check-button { display: grid; flex-shrink: 0; place-items: center; width: 21px; height: 21px; padding: 0; border: 0; border-radius: 50%; color: #adb1a6; background: transparent; cursor: pointer; }
+.check-button:hover { color: #71856b; }
+.is-complete .check-button { color: white; background: #8c9a81; }
+.todo-title { flex: 1; color: #484a44; font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+.is-complete .todo-title { color: #a6a89f; text-decoration: line-through; text-decoration-color: #bec0b7; }
+.delete-button { display: grid; place-items: center; width: 30px; height: 30px; border: 0; border-radius: 6px; color: #b4b5ae; background: transparent; cursor: pointer; opacity: 0; transition: all .15s; }
+.todo-row:hover .delete-button, .delete-button:focus-visible { color: #ad6d62; background: #faf2f0; opacity: 1; }
+.empty-state { display: flex; min-height: 241px; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.empty-icon { display: grid; place-items: center; width: 36px; height: 36px; margin-bottom: 10px; border-radius: 12px; color: #829177; background: #f1f3ed; font-size: 17px; }
+.empty-state h3 { margin: 2px 0 5px; font: 600 13px "Manrope", sans-serif; }
+.empty-state p { margin: 0; color: #a0a198; font-size: 11px; }
+.loader { width: 20px; height: 20px; border: 2px solid #e7eae2; border-top-color: #849276; border-radius: 50%; animation: spin .8s linear infinite; }
+.empty-state:has(.loader) { gap: 10px; }
+.empty-state:has(.loader) p { margin: 0; }
+.error-message { margin-top: 14px; padding: 10px 12px; border-radius: 7px; color: #934f45; background: #fbf1ef; font-size: 11px; line-height: 1.5; }
+.card-footer { display: flex; justify-content: space-between; align-items: center; min-height: 37px; color: #a0a198; font-size: 10px; }
+.footer-sparkle { padding-right: 5px; color: #a2aa90; }
+.clear-button { padding: 5px 0 5px 8px; border: 0; color: #9b827b; background: transparent; cursor: pointer; font-size: 10px; }
+.clear-button:hover { color: #875f57; }
+.page-footer { padding: 14px 0 25px; color: #adaea6; text-align: center; font-size: 8px; font-weight: 600; letter-spacing: 1.35px; }
+.page-footer span { padding: 0 5px; color: #9ea68f; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes appear { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 850px) {
+  .todo-layout { grid-template-columns: .8fr 1.2fr; gap: 38px; padding-right: 0; padding-left: 0; }
+  .todo-card { padding-right: 23px; padding-left: 23px; }
+}
+@media (max-width: 650px) {
+  .page-shell { width: min(100% - 36px, 440px); }
+  .topbar { height: 68px; }
+  .topbar-note { font-size: 10px; }
+  .todo-layout { display: flex; flex-direction: column; align-items: stretch; gap: 28px; padding: 43px 0 27px; }
+  .intro h1 { margin: 15px 0 10px; font-size: 39px; }
+  .intro > p { max-width: 340px; font-size: 13px; }
+  .progress-card { display: none; }
+  .gentle-reminder { display: none; }
+  .todo-card { padding: 24px 20px 15px; }
+  .filter-tabs { gap: 17px; }
+  .filter-tab { font-size: 9px; }
+}
+@media (max-width: 375px) {
+  .page-shell { width: calc(100% - 28px); }
+  .topbar-note { gap: 6px; font-size: 9px; }
+  .todo-card { padding-right: 15px; padding-left: 15px; }
+  .filter-tabs { gap: 12px; }
+  .add-form { gap: 7px; padding-left: 9px; }
+  .add-button { padding: 8px; }
+}
